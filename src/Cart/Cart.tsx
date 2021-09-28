@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useMemo } from "react";
 
-import CartItem from "../CartItem/CartItem";
+import CartItem from "src/CartItem/CartItem";
+
+import { CartItem as CartItemType } from "src/types/cart";
+
 import { Wrapper } from "./Cart.styles";
-import { CartItem as CartItemType } from "src/App";
 
 type Props = {
   cartItems: CartItemType[];
@@ -11,6 +13,11 @@ type Props = {
 };
 
 function Cart({ cartItems, addToCart, removeFromCart }: Props) {
+  const calculateTotalPrice = useMemo(
+    () => cartItems.reduce((acc, item) => acc + item.amount * item.price, 0),
+    [cartItems]
+  );
+
   return (
     <Wrapper>
       <h2>Shopping Cart</h2>
@@ -23,8 +30,9 @@ function Cart({ cartItems, addToCart, removeFromCart }: Props) {
           removeFromCart={removeFromCart}
         />
       ))}
+      <h2>Total: ${calculateTotalPrice.toFixed(2)}</h2>
     </Wrapper>
   );
 }
 
-export default Cart;
+export default React.memo(Cart);

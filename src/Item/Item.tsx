@@ -2,7 +2,8 @@ import React from "react";
 
 import Button from "@material-ui/core/Button";
 
-import { CartItem } from "../App";
+import { CartItem } from "src/types/cart";
+
 import { Wrapper } from "./Item.styles";
 
 type Props = {
@@ -26,4 +27,4 @@ function Item({ item, handleAddToCard }: Props) {
   );
 }
 
-export default Item;
+export default React.memo(Item);

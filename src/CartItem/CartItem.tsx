@@ -1,7 +1,8 @@
 import React from "react";
 
 import Button from "@material-ui/core/Button";
-import { CartItem as CartItemType } from "../App";
+
+import { CartItem as CartItemType } from "src/types/cart";
 
 import { Wrapper } from "./CartItem.styles";
 
@@ -47,4 +48,4 @@ function CartItem({ item, addToCart, removeFromCart }: Props) {
   );
 }
 
-export default CartItem;
+export default React.memo(CartItem);

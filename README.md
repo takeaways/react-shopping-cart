@@ -1,1 +1,1 @@
-# Simple Shopping Cart Project for test immer
+# Simple Shopping Cart Project for testing immer
